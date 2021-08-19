@@ -1,16 +1,29 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"gopkg.in/yaml.v2"
+	"io/ioutil"
+	"log"
 )
 
 func init()  {
-	println()
+	gin.SetMode(gin.ReleaseMode)
+	yamlFile, err := ioutil.ReadFile("config.yaml")
+	if err != nil {
+		log.Fatalf("读取config.yaml出错: %v", err)
+	}
+	if yaml.Unmarshal(yamlFile, &Config) != nil {
+		log.Fatalf("解析config.yaml出错: %v", err)
+	}
+	fmt.Printf("Init Config:\n")
+	fmt.Printf("-----User: %s\n",Config.User)
+	fmt.Printf("-----Secret: %s\n",Config.Secret)
+	fmt.Printf("-----Dir: %s\n\n\n",Config.Dir)
 }
 
 func main() {
-	const FolderLocation = "/"
-
 	r := gin.Default()
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{

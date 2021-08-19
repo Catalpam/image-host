@@ -19,7 +19,7 @@ func SaveImage(ctx *gin.Context)  {
 	// url前缀
 	url := "https://image.fengzigeng.com/"
 	// 文件夹目录
-	fildDir := fmt.Sprintf("test/")
+	fildDir := fmt.Sprintf(Config.Dir)
 
 	if err != nil {
 		ctx.JSON(400, gin.H{

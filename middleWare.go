@@ -6,10 +6,9 @@ import (
 
 func AuthMiddleWare() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		token := ctx.PostForm("token")
+		user := ctx.PostForm("user")
 		secret := ctx.PostForm("secret")
-
-		if token != "hhh" || secret != "888" {
+		if user !=  Config.User || secret != Config.Secret {
 			ctx.JSON(413, gin.H{
 				"code":  4001,
 				"error": "Not Authorized!",
