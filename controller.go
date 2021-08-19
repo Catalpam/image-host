@@ -71,16 +71,22 @@ func SaveImage(ctx *gin.Context)  {
 
 		// 尝试保存文件，并抛出可能的错误
 		errSave := ctx.SaveUploadedFile(f, filepath)
+
 		if errSave != nil {
 			ctx.JSON(400, gin.H{
 				"code": 4005,
-				"msg": "上传成功!",
+				"msg": "上传Failed!",
 			})
 			panic("Save Image Error")
 		}
+		if Config.Watermark.Word.IsEnable == true {
+			WaterMark(filepath)
+		}
+		if Config.Slim.IsEnable == true {
+			Slim(filepath)
+		}
 
 		urlpath := url + fmt.Sprintf("%s-%s",fileName,fileExt)
-
 		ctx.JSON(200, gin.H{
 			"code": 200,
 			"data":gin.H{

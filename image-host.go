@@ -20,7 +20,16 @@ func init()  {
 	fmt.Printf("Init Config:\n")
 	fmt.Printf("-----User: %s\n",Config.User)
 	fmt.Printf("-----Secret: %s\n",Config.Secret)
-	fmt.Printf("-----Dir: %s\n\n\n",Config.Dir)
+	fmt.Printf("-----Dir: %s\n\n",Config.Dir)
+	fmt.Println("Slim Config:")
+	fmt.Printf("-----Enable: %s\n",Config.Slim.IsEnable)
+	fmt.Printf("-----Threshold: %s\n\n",Config.Slim.Pixels)
+	fmt.Println("Word Watermark Config:")
+	fmt.Printf("-----Enable: %s\n",Config.Watermark.Word.IsEnable)
+	fmt.Printf("-----Content: %s\n\n",Config.Watermark.Word.Content)
+	fmt.Println("Image Watermark Config:")
+	fmt.Printf("-----Enable: %s\n",Config.Watermark.Image.IsEnable)
+	fmt.Printf("-----ImagePath: %s\n\n\n",Config.Watermark.Image.Path)
 }
 
 func main() {
