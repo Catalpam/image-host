@@ -29,9 +29,12 @@ Watermark:
     enable: false
     path: /Users/catalpam/Documents/image/wartermark.jpeg
 ```
+
 The image processing include watermarking and image compression are powered by bimg which use libvips via C Bindings.
 This Packsge(bimg) does not support watermarking for images with alpha channels, so currently all PNG images are converted to JPEG before watermarked. This problem may be fixed later by replacing third-party libraries or using Python-Opencv directly.
 图像处理目前拥有的功能为水印和图像压缩，使用bimg驱动，bimg使用C语言libvips库，可提供高速、低内存占用的的图像处理。
 然而非常可惜的是这个包(bimg)不支持带有alpha通道的图像水印，所以为了简化操作，目前所有PNG图像在水印之前都被转换为JPEG。这个问题可能会在将来通过直接与lipvips混编或直接使用Python-Opencv来解决（也有可能就这样鸽掉，又不是不能用）。
 
-之后测试后会放出release版本，有
+之后测试后会放出编译好的release版本，计划先只编译Darwin与Linux两者的arm及x86版本，有任何问题欢迎提出issue。 
+```yaml
+```yaml
